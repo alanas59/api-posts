@@ -1,20 +1,13 @@
-function loadPosts(){
-   fetch('https://jsonplaceholder.typicode.com/posts')
-   .then(res=>res.json()) 
-   .then(data=>displayPosts(data));
+const loadQuotes= () =>{
+  fetch('https://api.kanye.rest/')
+  .then(response=>response.json())
+  .then(json=>displayQuote(json));
+
 }
 
-loadPosts();
+/* loadQuotes(); */
 
-function displayPosts(posts){
-    const postContainer=document.getElementById('posts');
-    for(const post of posts){
-        const div=document.createElement('div');
-        div.classList.add('post');
-        div.innerHTML=`
-          <h3>${post.title}</h3>
-          <p>${post.body}</p>
-        `
-        postContainer.appendChild(div);
-    }
+const displayQuote= quote =>{
+  const quoteElement=document.getElementById('quote');
+  quoteElement.innerText=quote.quote;
 }
